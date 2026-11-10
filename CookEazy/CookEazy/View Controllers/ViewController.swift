@@ -14,6 +14,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func unwindToHomeVC(segue: UIStoryboardSegue) {
+        // This method is intentionally left empty to serve as an unwind action.
+    }
 
 }
 
