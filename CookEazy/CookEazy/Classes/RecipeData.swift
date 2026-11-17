@@ -13,21 +13,33 @@ class RecipeData : NSObject {
 
     var id: Int?
     var name: String?
-    var cookTime: Int? // in minutes
+    var cookTimeMinutes: Int? // in minutes
+    var servings: Int?
     var steps: String?
-    var ingredients: [IngredientData]?
+    var isTemplate: Bool?
+    var source: String?
+    var createdAt: String?
+    var ingredients: [RecipeIngredient]?
 
     func initWithData(
         theId: Int = 0,
         theName: String = "",
-        theCookTime: Int = 0,
+        theCookTimeMinutes: Int = 0,
+        theServings: Int = 0,
         theSteps: String = "",
-        theIngredients: [IngredientData] = []
+        theIsTemplate: Bool = false,
+        theSource: String = "",
+        theCreatedAt: String = "",
+        theIngredients: [RecipeIngredient] = []
     ) {
         self.id = theId
         self.name = theName
-        self.cookTime = theCookTime
+        self.cookTimeMinutes = theCookTimeMinutes
+        self.servings = theServings
         self.steps = theSteps
+        self.isTemplate = theIsTemplate
+        self.source = theSource
+        self.createdAt = theCreatedAt
         self.ingredients = theIngredients
     }
 }
