@@ -2,7 +2,8 @@
 //  RecipeData.swift
 //  CookEazy
 //
-//  Created by Daniel Soesito on 2026-11-16.
+//  Author: Daniel Soesito
+//  Created on 2026-11-16.
 //
 
 import UIKit
@@ -19,7 +20,7 @@ class RecipeData : NSObject {
     var isTemplate: Bool?
     var source: String?
     var createdAt: String?
-    var ingredients: [RecipeIngredient]?
+    var ingredients: [RecipeIngredientData]?
 
     func initWithData(
         theId: Int = 0,
@@ -30,7 +31,7 @@ class RecipeData : NSObject {
         theIsTemplate: Bool = false,
         theSource: String = "",
         theCreatedAt: String = "",
-        theIngredients: [RecipeIngredient] = []
+        theIngredients: [RecipeIngredientData] = []
     ) {
         self.id = theId
         self.name = theName
