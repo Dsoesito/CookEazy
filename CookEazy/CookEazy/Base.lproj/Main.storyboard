@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25408" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25407"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,6 +31,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Personal Recipes"/>
+                                <connections>
+                                    <segue destination="nav-vc-001" kind="presentation" modalPresentationStyle="fullScreen" id="mp-sg-001"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQi-km-1Dc">
                                 <rect key="frame" x="122" y="401" width="159" height="35"/>
@@ -394,10 +398,470 @@
             </objects>
             <point key="canvasLocation" x="2942" y="332"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nav-sc-001">
+            <objects>
+                <navigationController id="nav-vc-001" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nav-br-001">
+                        <rect key="frame" x="0.0" y="62" width="402" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cr-vc-001" kind="relationship" relationship="rootViewController" id="nav-rt-001"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nav-fr-001" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="842"/>
+        </scene>
+        <!--Recipe Creator-->
+        <scene sceneID="cr-sc-001">
+            <objects>
+                <viewController title="Recipe Creator" id="cr-vc-001" customClass="RecipeCreatorViewController" customModule="CookEazy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cr-vw-001">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="54" estimatedRowHeight="54" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="cr-tv-001">
+                                <rect key="frame" x="0.0" y="116" width="402" height="576"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RecipeCell" id="cr-cl-001">
+                                        <rect key="frame" x="16" y="55.333332061767578" width="370" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cr-cl-001" id="cr-cc-001">
+                                            <rect key="frame" x="0.0" y="0.0" width="339.66666666666669" height="54"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="LightCaramel"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="cr-vc-001" id="cr-ds-001"/>
+                                    <outlet property="delegate" destination="cr-vc-001" id="cr-dl-001"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="cr-es-001" userLabel="Empty State">
+                                <rect key="frame" x="16" y="335.33333333333331" width="370" height="137.66666666666669"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fork.knife" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cr-im-001">
+                                        <rect key="frame" x="159.33333333333334" y="-5.3333333333333286" width="51.666666666666657" height="73.666666666666657"/>
+                                        <color key="tintColor" name="DustyTaupe"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="56"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Recipes Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cr-lb-001">
+                                        <rect key="frame" x="83.666666666666671" y="79" width="202.66666666666663" height="26.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add your own recipe or start from our template." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cr-lb-002">
+                                        <rect key="frame" x="4.6666666666666572" y="117.33333333333337" width="360.66666666666674" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="cr-bs-001" userLabel="Buttons">
+                                <rect key="frame" x="16" y="704" width="370" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr-bt-001" userLabel="Add Your Recipe">
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="cr-ct-001"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system" title="Add Your Recipe" imagePadding="8" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="baseBackgroundColor" name="DustyTaupe"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addRecipeTapped:" destination="cr-vc-001" eventType="touchUpInside" id="cr-ac-001"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr-bt-002" userLabel="Use Our Template">
+                                        <rect key="frame" x="0.0" y="66" width="370" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="cr-ct-002"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" image="doc.on.doc" catalog="system" title="Use Our Template" imagePadding="8" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="baseBackgroundColor" name="LightCaramel"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="useTemplateTapped:" destination="cr-vc-001" eventType="touchUpInside" id="cr-ac-002"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cr-sa-001"/>
+                        <color key="backgroundColor" name="SoftPeach"/>
+                        <constraints>
+                            <constraint firstItem="cr-tv-001" firstAttribute="top" secondItem="cr-sa-001" secondAttribute="top" id="cr-ct-003"/>
+                            <constraint firstItem="cr-tv-001" firstAttribute="leading" secondItem="cr-sa-001" secondAttribute="leading" id="cr-ct-004"/>
+                            <constraint firstItem="cr-sa-001" firstAttribute="trailing" secondItem="cr-tv-001" secondAttribute="trailing" id="cr-ct-005"/>
+                            <constraint firstItem="cr-bs-001" firstAttribute="top" secondItem="cr-tv-001" secondAttribute="bottom" constant="12" id="cr-ct-006"/>
+                            <constraint firstItem="cr-bs-001" firstAttribute="leading" secondItem="cr-sa-001" secondAttribute="leading" constant="16" id="cr-ct-007"/>
+                            <constraint firstItem="cr-sa-001" firstAttribute="trailing" secondItem="cr-bs-001" secondAttribute="trailing" constant="16" id="cr-ct-008"/>
+                            <constraint firstItem="cr-sa-001" firstAttribute="bottom" secondItem="cr-bs-001" secondAttribute="bottom" constant="16" id="cr-ct-009"/>
+                            <constraint firstItem="cr-es-001" firstAttribute="centerY" secondItem="cr-tv-001" secondAttribute="centerY" id="cr-ct-010"/>
+                            <constraint firstItem="cr-es-001" firstAttribute="leading" secondItem="cr-sa-001" secondAttribute="leading" constant="16" id="cr-ct-011"/>
+                            <constraint firstItem="cr-sa-001" firstAttribute="trailing" secondItem="cr-es-001" secondAttribute="trailing" constant="16" id="cr-ct-012"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Recipe Creator" id="cr-ni-001">
+                        <barButtonItem key="leftBarButtonItem" id="cr-bb-001">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="cr-bk-001">
+                                <rect key="frame" x="20" y="4.6666666666666661" width="81.333333333333329" height="34.666666666666664"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="Back" imagePadding="4">
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backTapped:" destination="cr-vc-001" eventType="touchUpInside" id="cr-ac-003"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emptyStateView" destination="cr-es-001" id="cr-ou-001"/>
+                        <outlet property="tableView" destination="cr-tv-001" id="cr-ou-002"/>
+                        <segue destination="fm-vc-001" kind="show" identifier="showForm" id="cr-sg-001"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cr-fr-001" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="1592"/>
+        </scene>
+        <!--Your Recipe-->
+        <scene sceneID="fm-sc-001">
+            <objects>
+                <viewController title="Your Recipe" id="fm-vc-001" customClass="RecipeFormViewController" customModule="CookEazy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fm-vw-001">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fm-ts-001" userLabel="Top">
+                                <rect key="frame" x="16" y="124" width="370" height="122.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fm-lb-001">
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fm-nb-001" userLabel="Name Background">
+                                        <rect key="frame" x="0.0" y="28.333333333333343" width="370" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g. Grandma's Lasagna" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fm-tf-001">
+                                                <rect key="frame" x="16" y="0.0" width="338" height="50"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                <connections>
+                                                    <action selector="dismissKeyboard:" destination="fm-vc-001" eventType="editingDidEndOnExit" id="fm-ac-002"/>
+                                                    <action selector="nameChanged:" destination="fm-vc-001" eventType="editingChanged" id="fm-ac-001"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" name="LightCaramel"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="fm-ct-001"/>
+                                            <constraint firstItem="fm-tf-001" firstAttribute="leading" secondItem="fm-nb-001" secondAttribute="leading" constant="16" id="fm-ct-002"/>
+                                            <constraint firstAttribute="trailing" secondItem="fm-tf-001" secondAttribute="trailing" constant="16" id="fm-ct-003"/>
+                                            <constraint firstItem="fm-tf-001" firstAttribute="top" secondItem="fm-nb-001" secondAttribute="top" id="fm-ct-004"/>
+                                            <constraint firstAttribute="bottom" secondItem="fm-tf-001" secondAttribute="bottom" id="fm-ct-005"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fm-hs-001" userLabel="Column Headers">
+                                        <rect key="frame" x="0.0" y="86.333333333333343" width="370" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Ingredient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fm-lb-002">
+                                                <rect key="frame" x="0.0" y="0.0" width="297" height="36"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fm-lb-003">
+                                                <rect key="frame" x="305" y="0.0" width="65" height="36"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fm-hs-001" firstAttribute="height" constant="36" id="fm-ct-006"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" estimatedRowHeight="54" sectionHeaderHeight="0.0" sectionFooterHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="fm-tv-001">
+                                <rect key="frame" x="16" y="250.33333333333337" width="370" height="433"/>
+                                <color key="backgroundColor" name="LightCaramel"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="IngredientCell" id="fm-cl-001" customClass="IngredientCell" customModule="CookEazy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="370" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fm-cl-001" id="fm-cc-001">
+                                            <rect key="frame" x="0.0" y="0.0" width="370" height="54"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ingredient" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fm-tf-002">
+                                                    <rect key="frame" x="16" y="0.0" width="231" height="54"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="fieldChanged:" destination="fm-cl-001" eventType="editingChanged" id="fm-ac-003"/>
+                                                        <action selector="returnTapped:" destination="fm-cl-001" eventType="editingDidEndOnExit" id="fm-ac-004"/>
+                                                    </connections>
+                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fm-dv-001" userLabel="Divider">
+                                                    <rect key="frame" x="255" y="12" width="1" height="30"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="1" id="fm-ct-007"/>
+                                                    </constraints>
+                                                </view>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fm-tf-003">
+                                                    <rect key="frame" x="264" y="0.0" width="90" height="54"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="fm-ct-008"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <connections>
+                                                        <action selector="fieldChanged:" destination="fm-cl-001" eventType="editingChanged" id="fm-ac-005"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fm-tf-002" firstAttribute="leading" secondItem="fm-cc-001" secondAttribute="leading" constant="16" id="fm-ct-009"/>
+                                                <constraint firstItem="fm-tf-002" firstAttribute="top" secondItem="fm-cc-001" secondAttribute="top" id="fm-ct-010"/>
+                                                <constraint firstAttribute="bottom" secondItem="fm-tf-002" secondAttribute="bottom" id="fm-ct-011"/>
+                                                <constraint firstItem="fm-dv-001" firstAttribute="leading" secondItem="fm-tf-002" secondAttribute="trailing" constant="8" id="fm-ct-012"/>
+                                                <constraint firstItem="fm-dv-001" firstAttribute="top" secondItem="fm-cc-001" secondAttribute="top" constant="12" id="fm-ct-013"/>
+                                                <constraint firstAttribute="bottom" secondItem="fm-dv-001" secondAttribute="bottom" constant="12" id="fm-ct-014"/>
+                                                <constraint firstItem="fm-tf-003" firstAttribute="leading" secondItem="fm-dv-001" secondAttribute="trailing" constant="8" id="fm-ct-015"/>
+                                                <constraint firstAttribute="trailing" secondItem="fm-tf-003" secondAttribute="trailing" constant="16" id="fm-ct-016"/>
+                                                <constraint firstItem="fm-tf-003" firstAttribute="top" secondItem="fm-cc-001" secondAttribute="top" id="fm-ct-017"/>
+                                                <constraint firstAttribute="bottom" secondItem="fm-tf-003" secondAttribute="bottom" id="fm-ct-018"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="caloriesField" destination="fm-tf-003" id="fm-ou-001"/>
+                                            <outlet property="nameField" destination="fm-tf-002" id="fm-ou-002"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fm-vc-001" id="fm-ds-001"/>
+                                    <outlet property="delegate" destination="fm-vc-001" id="fm-dl-001"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fm-bs-001" userLabel="Bottom">
+                                <rect key="frame" x="16" y="691.33333333333337" width="370" height="132.66666666666663"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fm-bt-001" userLabel="Add Ingredient">
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="34.333333333333336"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system" title="Add Ingredient" imagePadding="8">
+                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addIngredientTapped:" destination="fm-vc-001" eventType="touchUpInside" id="fm-ac-006"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fm-ts-002" userLabel="Total">
+                                        <rect key="frame" x="0.0" y="46.333333333333258" width="370" height="20.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fm-lb-004">
+                                                <rect key="frame" x="0.0" y="0.0" width="323.66666666666669" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 cal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fm-lb-005">
+                                                <rect key="frame" x="331.66666666666669" y="0.0" width="38.333333333333314" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fm-bt-002" userLabel="Save Recipe">
+                                        <rect key="frame" x="0.0" y="78.666666666666629" width="370" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="fm-ct-019"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" title="Save Recipe" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="baseBackgroundColor" name="DustyTaupe"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="saveTapped:" destination="fm-vc-001" eventType="touchUpInside" id="fm-ac-007"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fm-sa-001"/>
+                        <color key="backgroundColor" name="SoftPeach"/>
+                        <constraints>
+                            <constraint firstItem="fm-ts-001" firstAttribute="top" secondItem="fm-sa-001" secondAttribute="top" constant="8" id="fm-ct-020"/>
+                            <constraint firstItem="fm-ts-001" firstAttribute="leading" secondItem="fm-sa-001" secondAttribute="leading" constant="16" id="fm-ct-021"/>
+                            <constraint firstItem="fm-sa-001" firstAttribute="trailing" secondItem="fm-ts-001" secondAttribute="trailing" constant="16" id="fm-ct-022"/>
+                            <constraint firstItem="fm-tv-001" firstAttribute="top" secondItem="fm-ts-001" secondAttribute="bottom" constant="4" id="fm-ct-023"/>
+                            <constraint firstItem="fm-tv-001" firstAttribute="leading" secondItem="fm-sa-001" secondAttribute="leading" constant="16" id="fm-ct-024"/>
+                            <constraint firstItem="fm-sa-001" firstAttribute="trailing" secondItem="fm-tv-001" secondAttribute="trailing" constant="16" id="fm-ct-025"/>
+                            <constraint firstItem="fm-bs-001" firstAttribute="top" secondItem="fm-tv-001" secondAttribute="bottom" constant="8" id="fm-ct-026"/>
+                            <constraint firstItem="fm-bs-001" firstAttribute="leading" secondItem="fm-sa-001" secondAttribute="leading" constant="16" id="fm-ct-027"/>
+                            <constraint firstItem="fm-sa-001" firstAttribute="trailing" secondItem="fm-bs-001" secondAttribute="trailing" constant="16" id="fm-ct-028"/>
+                            <constraint firstItem="fm-sa-001" firstAttribute="bottom" secondItem="fm-bs-001" secondAttribute="bottom" priority="750" constant="16" id="fm-ct-029"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Your Recipe" id="fm-ni-001">
+                        <barButtonItem key="leftBarButtonItem" id="fm-bb-001">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fm-bk-001">
+                                <rect key="frame" x="20" y="4.6666666666666661" width="81.333333333333329" height="34.666666666666664"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="Back" imagePadding="4">
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backTapped:" destination="fm-vc-001" eventType="touchUpInside" id="fm-ac-008"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomStack" destination="fm-bs-001" id="fm-ou-004"/>
+                        <outlet property="nameField" destination="fm-tf-001" id="fm-ou-003"/>
+                        <outlet property="tableView" destination="fm-tv-001" id="fm-ou-005"/>
+                        <outlet property="totalLabel" destination="fm-lb-005" id="fm-ou-006"/>
+                        <segue destination="ok-vc-001" kind="show" identifier="showCreated" id="fm-sg-001"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fm-fr-001" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="2342"/>
+        </scene>
+        <!--Recipe Created-->
+        <scene sceneID="ok-sc-001">
+            <objects>
+                <viewController title="Recipe Created" id="ok-vc-001" customClass="RecipeCreatedViewController" customModule="CookEazy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ok-vw-001">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ok-st-001">
+                                <rect key="frame" x="16" y="335.66666666666669" width="370" height="204.66666666666669"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ok-im-001">
+                                        <rect key="frame" x="129" y="1.3333333333333286" width="112.33333333333331" height="112.33333333333333"/>
+                                        <color key="tintColor" name="LightCaramel"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="96"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your recipe has been created!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ok-lb-001">
+                                        <rect key="frame" x="33" y="134.33333333333331" width="304" height="26.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ok-lb-002">
+                                        <rect key="frame" x="126.66666666666666" y="180.66666666666669" width="116.66666666666666" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok-bt-001" userLabel="Back to Recipe Creator">
+                                <rect key="frame" x="16" y="770" width="370" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="ok-ct-001"/>
+                                </constraints>
+                                <buttonConfiguration key="configuration" style="filled" title="Back to Recipe Creator" cornerStyle="capsule">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" name="DustyTaupe"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="ok-ex-001" kind="unwind" unwindAction="unwindToRecipeCreator:" id="ok-sg-001"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ok-sa-001"/>
+                        <color key="backgroundColor" name="SoftPeach"/>
+                        <constraints>
+                            <constraint firstItem="ok-st-001" firstAttribute="centerY" secondItem="ok-sa-001" secondAttribute="centerY" constant="-40" id="ok-ct-002"/>
+                            <constraint firstItem="ok-st-001" firstAttribute="leading" secondItem="ok-sa-001" secondAttribute="leading" constant="16" id="ok-ct-003"/>
+                            <constraint firstItem="ok-sa-001" firstAttribute="trailing" secondItem="ok-st-001" secondAttribute="trailing" constant="16" id="ok-ct-004"/>
+                            <constraint firstItem="ok-bt-001" firstAttribute="leading" secondItem="ok-sa-001" secondAttribute="leading" constant="16" id="ok-ct-005"/>
+                            <constraint firstItem="ok-sa-001" firstAttribute="trailing" secondItem="ok-bt-001" secondAttribute="trailing" constant="16" id="ok-ct-006"/>
+                            <constraint firstItem="ok-sa-001" firstAttribute="bottom" secondItem="ok-bt-001" secondAttribute="bottom" constant="16" id="ok-ct-007"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Recipe Created" id="ok-ni-001">
+                        <barButtonItem key="leftBarButtonItem" id="ok-bb-001">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ok-bk-001">
+                                <rect key="frame" x="20" y="4.6666666666666661" width="81.333333333333329" height="34.666666666666664"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="Back" imagePadding="4">
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backTapped:" destination="ok-vc-001" eventType="touchUpInside" id="ok-ac-001"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="checkmarkImageView" destination="ok-im-001" id="ok-ou-001"/>
+                        <outlet property="recipeNameLabel" destination="ok-lb-002" id="ok-ou-002"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ok-fr-001" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ok-ex-001" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="3092"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="arrow.backward" catalog="system" width="128" height="95"/>
+        <image name="arrow.backward" catalog="system" width="128" height="99"/>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="128"/>
+        <image name="chevron.left" catalog="system" width="93" height="128"/>
+        <image name="doc.on.doc" catalog="system" width="113" height="128"/>
+        <image name="fork.knife" catalog="system" width="91" height="128"/>
+        <image name="plus" catalog="system" width="128" height="118"/>
+        <image name="plus.circle" catalog="system" width="128" height="128"/>
+        <namedColor name="DustyTaupe">
+            <color red="0.63137254901960782" green="0.53333333333333333" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightCaramel">
+            <color red="0.8784313725490196" green="0.72156862745098038" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SoftPeach">
+            <color red="0.9882352941176471" green="0.87450980392156863" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
