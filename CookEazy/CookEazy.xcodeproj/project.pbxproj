@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		9E31420E30A2A55400CD6D7C /* CookEazy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookEazy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E516B8730B75F2600B13544 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -44,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				9E31421030A2A55400CD6D7C /* CookEazy */,
+				9E516B8630B75F2500B13544 /* Frameworks */,
 				9E31420F30A2A55400CD6D7C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +56,14 @@
 				9E31420E30A2A55400CD6D7C /* CookEazy.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9E516B8630B75F2500B13544 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E516B8730B75F2600B13544 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
