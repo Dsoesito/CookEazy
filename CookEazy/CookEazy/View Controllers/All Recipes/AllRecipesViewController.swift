@@ -34,7 +34,7 @@ class AllRecipesViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipe = mainDelegate.recipes[indexPath.row]
 
-        // Perform segue to recipe details view controller
+        performSegue(withIdentifier: "recipeSegue", sender: recipe)
     }
 
     override func viewDidLoad() {
@@ -44,15 +44,23 @@ class AllRecipesViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "recipeSegue" {
+
+            let destinationVC = segue.destination as! RecipeViewController
+
+            destinationVC.recipe = sender as? RecipeData
+        }
+    }
+    
+    @IBAction func unwindToAllRecipesVC(segue: UIStoryboardSegue) {
+        // This method is intentionally left empty to serve as an unwind action.
+    }
 
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
     */
 
 }
